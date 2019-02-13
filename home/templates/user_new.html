@@ -1,12 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block title %}user_new{% endblock %}
+{% block body%}
     <form action="/home/user_create/" method="POST">
         <!-- 데이터 베이스 값을 넣을 때 POST 방식 사용-->
         <!-- 때문에 값을 넘겨줄 때 토큰 값을 같이 넘겨준다.(보안을 위해)-->
@@ -15,6 +9,4 @@
         <input type="text" name="password"/>
         <input type="submit" value="Submit"/>
     </form>
-    
-</body>
-</html>
+{% endblock %}
