@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block title %} original {% endblock %}
+{% block body %}
+    <form action="/utilities/translated/">
+        <textarea name="content" cols="40" rows="8"></textarea>
+        <input type="submit" value="Submit"/>
+    </form>
+{% endblock %}
