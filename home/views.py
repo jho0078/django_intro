@@ -9,35 +9,35 @@ def index(request):
     # print(type(request))
     # pprint(request.META)
     # return HttpResponse('Welcome to Django !')
-    return render(request, 'index.html')
+    return render(request, 'home/index.html')
     
 def dinner(request):
     menus = ['장조림버터밥', '왕꼬치구이', '팽이버섯된장국', '단무지무침', '매실차']
     pick = random.choice(menus)
-    return render(request, 'dinner.html', {'menus' : menus, 'pick' : pick})
+    return render(request, 'home/dinner.html', {'menus' : menus, 'pick' : pick})
     
 def hello(request, name):
-    return render(request, 'hello.html', {'name' : name })
+    return render(request, 'home/hello.html', {'name' : name })
     
 def cube(request, number):
     result = int(number)**3
-    return render(request, 'cube.html', {'number' : number, 'result' : result})
+    return render(request, 'home/cube.html', {'number' : number, 'result' : result})
     
 def ping(request):
-    return render(request, 'ping.html')
+    return render(request, 'home/ping.html')
     
 def pong(request):
     print(request.GET)
     data = request.GET.get('data')
-    return render(request, 'pong.html', {'data' : data})
+    return render(request, 'home/pong.html', {'data' : data})
     
 def user_new(request):
-    return render(request, 'user_new.html')
+    return render(request, 'home/user_new.html')
     
 def user_create(request):
     nickname = request.POST.get('nickname')
     password = request.POST.get('password')
-    return render(request, 'user_create.html', {'nickname' : nickname, 'password' : password})
+    return render(request, 'home/user_create.html', {'nickname' : nickname, 'password' : password})
     
 def template_example(request):
     my_list = ['짜장면', '탕수육', '짬뽕', '양장피']
@@ -45,10 +45,10 @@ def template_example(request):
     messages = ['apple', 'banana', 'cucumber', 'mango']
     empty_list = []
     datetimenow = datetime.now()
-    return render(request, 'template_example.html',
+    return render(request, 'home/template_example.html',
             {'my_list' : my_list, 'my_sentence' : my_sentence,
             'messages' : messages, 'empty_list' : empty_list, 
             'datetimenow' : datetimenow})
 
 def static_example(request):
-    return render(request, 'static_example.html')
+    return render(request, 'home/static_example.html')
