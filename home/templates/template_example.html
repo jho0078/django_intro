@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body style='height: 10000px;'>
+    <h3>1. 반복문</h3>
+    {% for menu in my_list %}
+        <p>{{ menu }}</p>
+    {% endfor %}
+    <hr>
+    
+    {% for menu in my_list %}
+        {{ forloop.counter }}
+        {% if forloop.first %}
+            <p>짜장 + 고춧가루</p>
+        {% else %}
+            <p>{{ menu }}</p>
+        {% endif %}
+    {% endfor %}
+    <hr>
+    
+    {% for user in empty_list %}
+        <p>{{ user }}</p>
+    {% empty %}
+        <p>지금 가입한 회원이 없습니다.</p>
+    {% endfor %}
+    <hr>
+    
+    <h3>2. 조건문</h3>
+    {% if '짜장면' in my_list %}
+        <p>짜장면엔 고춧가루지!!</p>
+    {% endif %}
+    
+    <h3>3. lenth filter 활용</h3>
+    <p>길이 조건에 따라 출력</p>
+    {% for message in messages %}
+        {%  if message|length > 5 %}
+            <p>글씨가 너무 길어요</p>
+        {% else %}
+            <p>{{ message }}, {{ message|length }}</p>
+        {% endif %}
+    {% endfor %}
+    
+    <h3>4. lorem ipsum</h3>
+    <p>더미 글 출력</p>
+    {% lorem %}
+    <hr>
+    <p>3단어만 출력</p>
+    {% lorem 3 w %}
+    <hr>
+    <p>4단어 랜덤으로 출력</p>
+    {% lorem 4 w random %}
+    <hr>
+    <p>문단 출력</p>
+    {% lorem 2 p %}
+    <hr>
+    
+    <h3>5. 글자수 제한</h3>
+    <!--truncatechars는 공백 1개와 . 3개를 기본적으로 포함하고 있기 때문에-->
+    <!--6을 지정해주면 2개의 알파벳만 출력된다.-->
+    <p>{{ my_sentence|truncatewords:3 }}</p>
+    <p>{{ my_sentence|truncatechars:6 }}</p>
+    <p>{{ my_sentence|truncatechars:10 }}</p>
+    
+    <h3>6. 글자 관련 filter</h3>
+    <p>{{ 'abc'|length }}</p>
+    <p>{{ 'ABC'|lower }}</p>
+    <p>{{ my_sentence|title }}</p>
+    <p>{{ 'abc def'|capfirst }}</p>
+    <p>{{ my_list|random }}</p>
+    <hr>
+    
+    <h3>7. 연산</h3>
+    <p>{{ 4|add:6 }}</p>
+    <p>{{ '짜장'|add:'라면' }}</p>
+    
+    <h3>8. 날짜 표현</h3>
+    {% now "DATETIME_FORMAT" %}<br>
+    {% now "SHORT_DATETIME_FORMAT" %}<br>
+    {% now "DATE_FORMAT" %}<br>
+    {% now "SHORT_DATE_FORMAT" %}
+    <hr>
+    {% now "Y년 m월 d일 (D) h:i" %}
+    <hr>
+    {% now "Y" as current_year %}
+    Copyright {{ current_year }}
+    <hr>
+    {{ datetimenow }}<br>
+    {{ datetimenow|date:"SHORT_DATETIME_FORMAT" }}
+    
+    <h3>9. 기타</h3>
+    {{ 'google.com'|urlize }}
+    
+    
+</body>
+</html>
